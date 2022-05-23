@@ -1,0 +1,107 @@
+﻿@model ProdutoViewModel
+
+@{
+    ViewData["Title"] = "Editar Produto";
+    Layout = "_LayoutCadastroProduto";
+}
+
+<h1 class="text-center mt-5 mb-5" style="font-weight: 300; font-family: revert;">Produtos</h1>
+<form asp-action="CadastrarProduto">
+    <div class="form-group">
+        <div class="row">
+            <div class="col">
+                <input type="hidden" asp-for="Produto.Id" />
+                <label asp-for="Produto.NomeProduto">Nome do Produto</label>
+                <input asp-for="Produto.NomeProduto" class="form-control" />
+            </div>
+            <div class="col">
+                <label asp-for="Produto.Quantidade">Quantidade</label>
+                <input asp-for="Produto.Quantidade" class="form-control" />
+            </div>
+            <div class="col">
+                <label asp-for="Produto.ProdutoTroca">Produto Troca</label>
+                <input asp-for="Produto.ProdutoTroca" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col">
+                <label asp-for="Produto.DataColheita">Data da Colheita</label>
+                <input asp-for="Produto.DataColheita" class="form-control" />
+            </div>
+            <div class="col">
+                <label asp-for="Produto.DataValidade">Data de Validade</label>
+                <input asp-for="Produto.DataValidade" class="form-control" />
+            </div>
+            <div class="col">
+                <label asp-for="Produto.DataDisponibilidade">Data de Disponibilidade</label>
+                <input asp-for="Produto.DataDisponibilidade" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <input type="submit" value="Cadastrar" class="btn btn-outline-info" />
+
+    @if (TempData["flag"] == "true")
+    {
+        <input type="submit" asp-action="Atualizar" value="Atualizar" class="btn btn-info" />
+    }
+    else
+    {
+        <input type="hidden" asp-action="Atualizar" value="Atualizar" class="btn btn-info" />
+    }
+
+</form>
+
+<table class="table mt-5">
+    <tr>
+        <th>Nome do Produto</th>
+        <th>Quantidade</th>
+        <th>Produto Troca</th>
+        <th>Data Colheita</th>
+        <th>Data Validade</th>
+        <th>Data Disponibilidade</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.Lista)
+    {
+        <tr>
+            <td>@item.NomeProduto</td>
+            <td>@item.Quantidade</td>
+            <td>@item.ProdutoTroca</td>
+            <td>@item.DataColheita.ToShortDateString()</td>
+            <td>@item.DataValidade.ToShortDateString()</td>
+            <td>@item.DataDisponibilidade.ToShortDateString()</td>
+            <td>
+                <a asp-action="EditarProduto" asp-controller="Produto" asp-route-id="@item.Id" class="btn btn-secondary sm">Editar</a>
+                <button onclick="idProduto.value = @item.Id" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                    Deletar
+                </button>
+            </td>
+        </tr>
+    }
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Você realmente deseja remover este produto de sua lista?
+            </div>
+            <div class="modal-footer">
+                <form asp-action="RemoverProduto">
+                    <input type="hidden" name="id" id="idProduto" />
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <button type="submit" class="btn btn-danger">Sim</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

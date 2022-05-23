@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Cadastrar Usuário";
+    Layout = "_LayoutLogin";
+}
+
+<h1 class="text-center mt-5 mb-3" style="font-weight: 300; font-family: revert;">Cadastro de Usuário</h1>
+
+<form asp-action="CadastrarUsuario">
+    <partial name="_FormCadastroUsuario" />
+    <input type="submit" value="Cadastrar" class="btn btn-outline-success" />
+</form>

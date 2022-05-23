@@ -1,0 +1,14 @@
+﻿@model Usuario
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_LayoutLogin";
+}
+
+<h1 class="text-center mt-5" style="font-weight: 300; font-family: revert;">LOGIN</h1>
+<form asp-action="ValidarUsuario" class="mt-5" style="max-width:300px; margin:auto;">
+    <mensagem texto="@TempData["msg"]" class="alert alert-danger"></mensagem>
+    <input asp-for="Email" class="form-control mt-3" placeholder="E-mail" />
+    <input asp-for="Senha" class="form-control mt-2" placeholder="Senha" />
+    <input type="submit" value="Entrar" class="btn btn-lg btn-outline-success btn-block mt-3 mb-2" />
+</form>

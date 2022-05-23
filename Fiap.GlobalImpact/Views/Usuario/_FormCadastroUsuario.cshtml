@@ -1,0 +1,62 @@
+﻿<!--Formulário para cadastro do usuário-->
+<!--Usuario: Nome, Data de Nascimento, E-mail, RG, Telefone, Senha-->
+<!--Endereco: País*, Estado*, Cidade, Bairro, Rua, Número-->
+
+@model Usuario
+
+<div class="form-group">
+    <label asp-for="Nome"></label>
+    <input asp-for="Nome" class="form-control" />
+</div>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col">
+            <label asp-for="DataNascimento"></label>
+            <input asp-for="DataNascimento" class="form-control" />
+        </div>
+        <div class="col">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+        <div class="col">
+            <label asp-for="Rg"></label>
+            <input asp-for="Rg" class="form-control" />
+        </div>
+        <div class="col">
+            <label asp-for="Telefone"></label>
+            <input asp-for="Telefone" class="form-control" />
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col">
+            <label asp-for="Endereco.Cidade"></label>
+            <input asp-for="Endereco.Cidade" class="form-control" />
+        </div>
+        <div class="col">
+            <label asp-for="Endereco.Bairro"></label>
+            <input asp-for="Endereco.Bairro" class="form-control" />
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col">
+            <label asp-for="Endereco.Rua"></label>
+            <input asp-for="Endereco.Rua" class="form-control" />
+        </div>
+        <div class="col">
+            <label asp-for="Endereco.Numero"></label>
+            <input asp-for="Endereco.Numero" class="form-control" />
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="Senha"></label>
+    <input asp-for="Senha" class="form-control" />
+</div>

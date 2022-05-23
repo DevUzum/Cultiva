@@ -1,0 +1,18 @@
+﻿@model List<Produto>
+
+@{
+    ViewData["Title"] = "Usuário Logado";
+    Layout = "_LayoutLogado";
+}
+
+@foreach (var item in Model)
+{
+    <div class="card mt-2 box-produto" style="width: calc(25% - 8px); margin: 0 4px; box-sizing: border-box; ">
+        <div class="card-body">
+            <h5 class="card-title">@item.NomeProduto</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Quantidade: @item.Quantidade</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Produto de Troca: @item.ProdutoTroca</h6>
+            <a href="#" class="card-link">Trocar</a>
+        </div>
+    </div>
+}
